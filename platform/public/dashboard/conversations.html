@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatPod AI — יומן שיחות</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon">💬</span>
+      <span class="logo-text">ChatPod <span class="logo-ai">AI</span></span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-item" title="לוח בקרה">
+        <span class="nav-icon">📊</span><span class="nav-label">לוח בקרה</span>
+      </a>
+      <a href="conversations.html" class="nav-item active" title="יומן שיחות">
+        <span class="nav-icon">💬</span><span class="nav-label">יומן שיחות</span>
+      </a>
+      <a href="#" class="nav-item" title="תור תמיכה">
+        <span class="nav-icon">🎧</span><span class="nav-label">תור תמיכה</span>
+      </a>
+      <a href="#" class="nav-item" title="לקוחות">
+        <span class="nav-icon">👥</span><span class="nav-label">לקוחות</span>
+      </a>
+      <a href="#" class="nav-item" title="מוצרים">
+        <span class="nav-icon">🛍️</span><span class="nav-label">מוצרים</span>
+      </a>
+      <a href="#" class="nav-item" title="אוטומציות">
+        <span class="nav-icon">⚡</span><span class="nav-label">אוטומציות</span>
+      </a>
+      <a href="#" class="nav-item" title="קמפיינים">
+        <span class="nav-icon">📢</span><span class="nav-label">קמפיינים</span>
+      </a>
+      <a href="#" class="nav-item" title="צוות">
+        <span class="nav-icon">👤</span><span class="nav-label">צוות</span>
+      </a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="#" class="nav-item" title="הגדרות">
+        <span class="nav-icon">⚙️</span><span class="nav-label">הגדרות</span>
+      </a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="page-title">יומן שיחות</h1>
+        <span class="store-name">shacnezitd.co.il</span>
+      </div>
+      <div class="topbar-right">
+        <input type="search" class="search-input" placeholder="חפש שיחה..." id="searchInput" />
+        <div class="user-avatar">AV</div>
+      </div>
+    </header>
+
+    <section class="conversations-section">
+      <div id="conversationsList"></div>
+    </section>
+  </main>
+
+  <div class="mgmt-panel">פאנל ניהול ⚙️</div>
+
+  <script>
+    const statusLabels = {
+      closed: { label: 'סגור', cls: 'status-closed' },
+      escalated: { label: 'הועלה לנציג', cls: 'status-escalated' },
+      purchased: { label: 'רכישה', cls: 'status-purchased' }
+    };
+
+    function groupByDate(sessions) {
+      const groups = {};
+      sessions.forEach(s => {
+        if (!groups[s.date]) groups[s.date] = [];
+        groups[s.date].push(s);
+      });
+      return groups;
+    }
+
+    function formatDate(dateStr) {
+      const d = new Date(dateStr);
+      const days = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+      const months = ['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
+      return `יום ${days[d.getDay()]}, ${d.getDate()} ב${months[d.getMonth()]} ${d.getFullYear()}`;
+    }
+
+    async function loadConversations() {
+      const res = await fetch('/api/conversations');
+      const data = await res.json();
+      const groups = groupByDate(data.sessions);
+      const container = document.getElementById('conversationsList');
+
+      Object.keys(groups).sort((a,b) => b.localeCompare(a)).forEach(date => {
+        const group = document.createElement('div');
+        group.className = 'conv-group';
+        group.innerHTML = `<div class="conv-date-header">${formatDate(date)}</div>`;
+
+        groups[date].forEach(s => {
+          const st = statusLabels[s.status] || { label: s.status, cls: 'status-closed' };
+          const row = document.createElement('div');
+          row.className = 'conv-row';
+          row.innerHTML = `
+            <div class="conv-duration">${s.duration}</div>
+            <div class="conv-link">🔗</div>
+            <div class="conv-meta">
+              <div class="conv-title">${s.title}</div>
+              <div class="conv-id">${s.id}</div>
+            </div>
+            <div class="conv-count">${s.messageCount} הודעות</div>
+            <span class="conv-status ${st.cls}">${st.label}</span>
+          `;
+          group.appendChild(row);
+        });
+
+        container.appendChild(group);
+      });
+    }
+
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.conv-row').forEach(row => {
+        const title = row.querySelector('.conv-title').textContent.toLowerCase();
+        row.style.display = title.includes(q) ? '' : 'none';
+      });
+    });
+
+    loadConversations();
+  </script>
+</body>
+</html>

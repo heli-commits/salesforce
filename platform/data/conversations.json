@@ -1,0 +1,100 @@
+{
+  "sessions": [
+    {
+      "id": "9e849456-1887-461b-88e3-e97f67837cd2",
+      "title": "בירור לגבי נרות ריחניים",
+      "duration": "02:14",
+      "messageCount": 2,
+      "date": "2026-04-18",
+      "status": "closed"
+    },
+    {
+      "id": "3eb29938-a2b0-4301-ac80-b9143386f1ef",
+      "title": "פתיחת שיחה ובירור כללי",
+      "duration": "04:03",
+      "messageCount": 20,
+      "date": "2026-04-15",
+      "status": "closed"
+    },
+    {
+      "id": "d8bd46b2-f741-4cbc-ac57-928ad0a0748f",
+      "title": "בירור לגבי מבצעים והנחות",
+      "duration": "03:50",
+      "messageCount": 20,
+      "date": "2026-04-15",
+      "status": "closed"
+    },
+    {
+      "id": "9a868869-9380-44ec-b2ae-1423eff11612",
+      "title": "הבהרה בנושא תלונה על ארנק",
+      "duration": "03:41",
+      "messageCount": 6,
+      "date": "2026-04-15",
+      "status": "escalated"
+    },
+    {
+      "id": "b9a8ed38-0688-40a5-888f-b234b4609208",
+      "title": "תלונה על ארנק פגום",
+      "duration": "03:38",
+      "messageCount": 8,
+      "date": "2026-04-15",
+      "status": "escalated"
+    },
+    {
+      "id": "4ee84efb-0058-48ba-bcc9-c4f2718cbf2d",
+      "title": "בירור על מבצעים והנחות",
+      "duration": "02:10",
+      "messageCount": 2,
+      "date": "2026-04-15",
+      "status": "closed"
+    },
+    {
+      "id": "80932f3c-f29f-40c1-b239-b88a1e947199",
+      "title": "בירור מחיר עבור עצים",
+      "duration": "14:07",
+      "messageCount": 2,
+      "date": "2026-04-10",
+      "status": "closed"
+    },
+    {
+      "id": "a1b2c3d4-1234-5678-abcd-ef1234567890",
+      "title": "שאלה על קלוריות בתמר",
+      "duration": "05:22",
+      "messageCount": 6,
+      "date": "2026-04-10",
+      "status": "closed"
+    },
+    {
+      "id": "b2c3d4e5-2345-6789-bcde-f12345678901",
+      "title": "המלצה על מארז מתנה לפסח",
+      "duration": "08:14",
+      "messageCount": 12,
+      "date": "2026-04-09",
+      "status": "purchased"
+    },
+    {
+      "id": "c3d4e5f6-3456-789a-cdef-012345678902",
+      "title": "שאלה על משלוח לחו\"ל",
+      "duration": "03:45",
+      "messageCount": 4,
+      "date": "2026-04-09",
+      "status": "closed"
+    },
+    {
+      "id": "d4e5f6a7-4567-89ab-def0-123456789003",
+      "title": "רכישת מארז ספורט ואנרגיה",
+      "duration": "04:30",
+      "messageCount": 8,
+      "date": "2026-04-08",
+      "status": "purchased"
+    },
+    {
+      "id": "e5f6a7b8-5678-9abc-ef01-234567890104",
+      "title": "בירור על אלרגיות ורכיבים",
+      "duration": "06:11",
+      "messageCount": 10,
+      "date": "2026-04-07",
+      "status": "closed"
+    }
+  ]
+}

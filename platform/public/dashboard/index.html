@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatPod AI — לוח בקרה</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span class="logo-icon">💬</span>
+      <span class="logo-text">ChatPod <span class="logo-ai">AI</span></span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-item active" title="לוח בקרה">
+        <span class="nav-icon">📊</span><span class="nav-label">לוח בקרה</span>
+      </a>
+      <a href="conversations.html" class="nav-item" title="יומן שיחות">
+        <span class="nav-icon">💬</span><span class="nav-label">יומן שיחות</span>
+      </a>
+      <a href="#" class="nav-item" title="תור תמיכה">
+        <span class="nav-icon">🎧</span><span class="nav-label">תור תמיכה</span>
+      </a>
+      <a href="#" class="nav-item" title="לקוחות">
+        <span class="nav-icon">👥</span><span class="nav-label">לקוחות</span>
+      </a>
+      <a href="#" class="nav-item" title="מוצרים">
+        <span class="nav-icon">🛍️</span><span class="nav-label">מוצרים</span>
+      </a>
+      <a href="#" class="nav-item" title="אוטומציות">
+        <span class="nav-icon">⚡</span><span class="nav-label">אוטומציות</span>
+      </a>
+      <a href="#" class="nav-item" title="קמפיינים">
+        <span class="nav-icon">📢</span><span class="nav-label">קמפיינים</span>
+      </a>
+      <a href="#" class="nav-item" title="צוות">
+        <span class="nav-icon">👤</span><span class="nav-label">צוות</span>
+      </a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a href="#" class="nav-item" title="הגדרות">
+        <span class="nav-icon">⚙️</span><span class="nav-label">הגדרות</span>
+      </a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="page-title">לוח בקרה</h1>
+        <span class="store-name" id="storeName">shacnezitd.co.il</span>
+      </div>
+      <div class="topbar-right">
+        <div class="date-range">
+          <span>מרץ 26 — אפריל 20, 2026</span>
+        </div>
+        <div class="user-avatar">AV</div>
+      </div>
+    </header>
+
+    <!-- KPI CARDS -->
+    <section class="kpi-row">
+      <div class="kpi-card">
+        <div class="kpi-icon">🛒</div>
+        <div class="kpi-body">
+          <div class="kpi-label">מוצרים שנוספו לעגלה</div>
+          <div class="kpi-value" id="totalCartAdds">—</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">💳</div>
+        <div class="kpi-body">
+          <div class="kpi-label">רכישות מהעגלה</div>
+          <div class="kpi-value" id="totalPurchases">—</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">👆</div>
+        <div class="kpi-body">
+          <div class="kpi-label">קליקים על מוצרים</div>
+          <div class="kpi-value" id="totalClicks">—</div>
+        </div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">💬</div>
+        <div class="kpi-body">
+          <div class="kpi-label">שיחות</div>
+          <div class="kpi-value" id="totalConversations">—</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHARTS -->
+    <section class="charts-section">
+
+      <div class="chart-card">
+        <div class="chart-header">
+          <h2>מוצרים שנוספו לעגלה <span class="chart-icon">🛒</span></h2>
+          <span class="chart-total" id="cartAddsTotal"></span>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="cartAddsChart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-header">
+          <h2>רכישות מהעגלה <span class="chart-icon">💳</span></h2>
+          <span class="chart-total" id="purchasesTotal"></span>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="purchasesChart"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-header">
+          <h2>קליקים על מוצרים <span class="chart-icon">👆</span></h2>
+          <span class="chart-total" id="clicksTotal"></span>
+        </div>
+        <div class="chart-wrap">
+          <canvas id="clicksChart"></canvas>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <div class="mgmt-panel">פאנל ניהול ⚙️</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
